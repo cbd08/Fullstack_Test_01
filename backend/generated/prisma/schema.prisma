@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model project {
+  id            Int             @id @default(autoincrement())
+  name          String
+  description   String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime
+  ownerId       Int
+  user          user            @relation(fields: [ownerId], references: [id], map: "Project_ownerId_fkey")
+  projectmember projectmember[]
+  task          task[]
+
+  @@index([ownerId], map: "Project_ownerId_fkey")
+}
+
+model projectmember {
+  projectId Int
+  userId    Int
+  role      projectmember_role @default(MEMBER)
+  createdAt DateTime           @default(now())
+  project   project            @relation(fields: [projectId], references: [id], onDelete: Cascade, map: "ProjectMember_projectId_fkey")
+  user      user               @relation(fields: [userId], references: [id], onDelete: Cascade, map: "ProjectMember_userId_fkey")
+
+  @@id([projectId, userId])
+  @@index([userId], map: "ProjectMember_userId_fkey")
+}
+
+model task {
+  id          Int           @id @default(autoincrement())
+  title       String
+  description String?
+  status      task_status   @default(TODO)
+  priority    task_priority @default(MEDIUM)
+  dueDate     DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime
+  projectId   Int
+  assigneeId  Int?
+  user        user?         @relation(fields: [assigneeId], references: [id], map: "Task_assigneeId_fkey")
+  project     project       @relation(fields: [projectId], references: [id], onDelete: Cascade, map: "Task_projectId_fkey")
+
+  @@index([assigneeId], map: "Task_assigneeId_fkey")
+  @@index([projectId], map: "Task_projectId_fkey")
+}
+
+model user {
+  id            Int             @id @default(autoincrement())
+  name          String
+  email         String          @unique(map: "User_email_key")
+  passwordHash  String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime
+  project       project[]
+  projectmember projectmember[]
+  task          task[]
+}
+
+enum projectmember_role {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+enum task_status {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+enum task_priority {
+  LOW
+  MEDIUM
+  HIGH
+}
