@@ -1,310 +1,140 @@
 # Decisiones Técnicas
-## [Tu Nombre]
-
-> **Nota**: Este es un archivo opcional pero recomendado. Documentar tus decisiones técnicas demuestra pensamiento crítico y puede sumar puntos extra en la evaluación.
-
----
+## Sebastian Diaz
 
 ## 📋 Información General
-
-- **Nombre del Candidato**: [Tu nombre completo]
-- **Fecha de Inicio**: [DD/MM/YYYY]
-- **Fecha de Entrega**: [DD/MM/YYYY]
-- **Tiempo Dedicado**: [Ej: ~20 horas]
-
----
+- **Nombre del Candidato**: Sebastian Diaz
+- **Fecha de Inicio**: 22/11/2025
+- **Fecha de Entrega**: 24/11/2025
+- **Tiempo Dedicado**: ~20 horas
 
 ## 🛠️ Stack Tecnológico Elegido
 
 ### Backend
-
 | Tecnología | Versión | Razón de Elección |
 |------------|---------|-------------------|
-| Node.js | 18.x | [Explica por qué elegiste esta versión] |
-| Express | 4.x | [Razón] |
-| Base de Datos | MySQL/MongoDB | [¿Por qué elegiste esta sobre la otra?] |
-| ORM/ODM | Sequelize/Mongoose | [Razón] |
-| Validación | express-validator/Joi/Zod | [Razón] |
-| Testing | Jest/Mocha | [Razón] |
+| Node.js | 18.x | LTS, estable, soporte amplio |
+| Express | 4.x | Minimalista y flexible |
+| MySQL | 8.x | Relacional, ideal para entidades con relaciones |
+| Prisma | 5.x | Migraciones, tipado fuerte, DX excelente |
+| Zod | Última | Validación moderna reutilizable |
+| Jest | Última | Testing simple y robusto |
 
 ### Frontend
-
-| Tecnología | Versión | Razón de Elección |
-|------------|---------|-------------------|
-| React | 18.x | [Razón] |
-| Build Tool | Vite/CRA | [¿Por qué elegiste este?] |
-| Estado Global | Context/Redux/Zustand | [Razón] |
-| Estilos | CSS/Tailwind/MUI/etc | [Razón] |
-| Formularios | react-hook-form/Formik | [Razón] |
-
----
+| Tecnología | Versión | Razón |
+|------------|---------|--------|
+| React | 18.x | SPA moderna y declarativa |
+| Vite | Última | Dev server ultra rápido |
+| Zustand | Última | Estado global simple |
+| TailwindCSS | 3.x | Estilos rápidos y consistentes |
+| React Hook Form | Última | Manejo eficiente de formularios |
 
 ## 🏗️ Arquitectura
 
-### Estructura del Backend
-
+### Backend
 ```
 backend/
 ├── src/
-│   ├── [tu estructura]
-│   └── ...
+│   ├── config/
+│   ├── controllers/
+│   ├── middlewares/
+│   ├── routes/
+│   ├── services/
+│   ├── utils/
+│   ├── prisma/
+│   └── app.js
 ```
 
-**Razón de esta estructura:**
-[Explica por qué organizaste tu código de esta manera]
-
-### Estructura del Frontend
-
+### Frontend
 ```
 frontend/
 ├── src/
-│   ├── [tu estructura]
-│   └── ...
+│   ├── components/
+│   ├── pages/
+│   ├── store/
+│   ├── hooks/
+│   ├── services/
+│   └── main.jsx
 ```
 
-**Razón de esta estructura:**
-[Explica por qué organizaste tu código de esta manera]
+## 🗄️ Base de Datos
 
----
-
-## 🗄️ Diseño de Base de Datos
-
-### Elección: MySQL / MongoDB
+### Elección: MySQL
 
 **Razones:**
-- [Razón 1]
-- [Razón 2]
-- [Razón 3]
+- Relacional
+- Integridad referencial
+- Fácil modelado para Usuarios-Proyectos-Tareas
 
-### Schema/Modelos
-
-[Describe brevemente tus tablas/colecciones principales]
-
-**Decisiones importantes:**
-- **Normalización** (si usas MySQL): [Explica cómo normalizaste]
-- **Índices**: [Qué índices agregaste y por qué]
-- **Relaciones**: [Cómo manejaste las relaciones entre entidades]
-
----
+### Decisiones:
+- Normalización hasta 3FN
+- Relaciones 1:N para proyectos y tareas
+- Índices en claves foráneas para optimizar consultas
 
 ## 🔐 Seguridad
+- Hash de contraseñas con bcrypt
+- JWT con expiración de 7 días
+- Validación Zod para inputs
+- CORS configurado a dominios permitidos
+- Helmet para headers de seguridad
 
-### Implementaciones de Seguridad
-
-- [ ] **Hash de contraseñas**: [bcrypt, argon2, etc. - ¿Por qué elegiste este?]
-- [ ] **JWT**: [¿Cómo configuraste la expiración? ¿Por qué?]
-- [ ] **Validación de inputs**: [¿Qué estrategia usaste?]
-- [ ] **CORS**: [¿Cómo lo configuraste?]
-- [ ] **Headers de seguridad**: [¿Usaste helmet? ¿Otras medidas?]
-- [ ] **Rate limiting**: [Si lo implementaste, ¿cómo?]
-
-### Consideraciones Adicionales
-
-[¿Qué otras medidas de seguridad tomaste? ¿Qué vulnerabilidades consideraste?]
-
----
-
-## 🎨 Decisiones de UI/UX
-
-### Framework/Librería de UI
-
-**Elegí**: [Ninguna / Material-UI / Ant Design / TailwindCSS / etc.]
-
-**Razón**: [¿Por qué elegiste esto sobre otras opciones?]
-
-### Patrones de Diseño
-
-- **Responsive Design**: [¿Cómo lo abordaste? Mobile-first?]
-- **Loading States**: [¿Cómo manejaste los estados de carga?]
-- **Error Handling**: [¿Cómo muestras errores al usuario?]
-- **Feedback Visual**: [Toasts, modales, etc.]
-
-### Decisiones de UX
-
-[Explica algunas decisiones importantes de experiencia de usuario que tomaste]
-
----
+## 🎨 UI/UX
+- TailwindCSS → consistencia visual
+- Diseño responsive
+- Loading states en Peticiones
+- Feedback visual con toasts
+- Validación en formularios del lado del cliente y servidor
 
 ## 🧪 Testing
-
-### Estrategia de Testing
-
-**Backend:**
-- [Tipo de tests que escribiste]
-- [¿Por qué elegiste probar estos endpoints/funciones específicamente?]
-- [Herramientas usadas]
-
-**Frontend:**
-- [Tipo de tests que escribiste]
-- [¿Qué componentes decidiste probar y por qué?]
-- [Herramientas usadas]
-
-### Cobertura
-
-- **Backend**: [X%]
-- **Frontend**: [X%]
-
-[¿Por qué decidiste este nivel de cobertura dado el tiempo disponible?]
-
----
+### Backend
+- Pruebas de rutas principales: auth, proyectos, tareas
+- Supertest para endpoints
+### Frontend
+- Tests de componentes clave: Login, ProtectedRoute, ProjectsList
+- React Testing Library
 
 ## 🐳 Docker
-
-### Implementación
-
-- [ ] Dockerfile backend
-- [ ] Dockerfile frontend
-- [ ] docker-compose.yml
-
-**Decisiones:**
-- [¿Por qué elegiste Alpine/Debian como base?]
-- [¿Usaste multi-stage builds? ¿Por qué?]
-- [¿Cómo optimizaste el tamaño de las imágenes?]
-
----
+(Planeado, no aplicado por entorno actual)
+- multi‑stage build
+- imágenes ligeras basadas en Alpine
 
 ## ⚡ Optimizaciones
-
-### Backend
-
-- [Optimización 1 y por qué la implementaste]
-- [Optimización 2]
-- [etc.]
-
-### Frontend
-
-- [Optimización 1]
-- [Optimización 2]
-- [etc.]
-
----
+- Controladores desacoplados de servicios
+- Reutilización de esquemas Zod
+- Cache de usuario autenticado en Zustand
 
 ## 🚧 Desafíos y Soluciones
 
-### Desafío 1: [Nombre del desafío]
+### 1. Manejo de autenticación global
+**Solución:** Zustand + persistencia local
 
-**Problema:**
-[Describe el problema que enfrentaste]
+### 2. Renderizado protegido
+**Solución:** ProtectedRoute validando token
 
-**Solución:**
-[Cómo lo resolviste]
-
-**Aprendizaje:**
-[Qué aprendiste de esto]
-
-### Desafío 2: [Nombre del desafío]
-
-**Problema:**
-[Descripción]
-
-**Solución:**
-[Tu solución]
-
-**Aprendizaje:**
-[Qué aprendiste]
-
-### Desafío 3: [Nombre del desafío]
-
-**Problema:**
-[Descripción]
-
-**Solución:**
-[Tu solución]
-
-**Aprendizaje:**
-[Qué aprendiste]
-
----
+### 3. Tests fallando por asincronía
+**Solución:** Mock de stores + waitFor
 
 ## 🎯 Trade-offs
 
-### Trade-off 1: [Decisión]
+### Prisma vs SQL puro
+- Prisma agiliza desarrollo, pero menos flexibilidad en queries complejas
 
-**Opciones consideradas:**
-- Opción A: [Descripción]
-- Opción B: [Descripción]
-
-**Elegí**: [Opción X]
-
-**Razón:**
-[Por qué elegiste esta opción sobre la otra. ¿Qué sacrificaste y qué ganaste?]
-
-### Trade-off 2: [Decisión]
-
-**Opciones consideradas:**
-- [...]
-
-**Elegí**: [...]
-
-**Razón:**
-[...]
-
----
+### Zustand vs Redux
+- Zustand es más rápido, Redux más estructurado
 
 ## 🔮 Mejoras Futuras
-
-Si tuviera más tiempo, implementaría:
-
-1. **[Mejora 1]**
-   - Descripción: [...]
-   - Beneficio: [...]
-   - Tiempo estimado: [...]
-
-2. **[Mejora 2]**
-   - Descripción: [...]
-   - Beneficio: [...]
-   - Tiempo estimado: [...]
-
-3. **[Mejora 3]**
-   - Descripción: [...]
-   - Beneficio: [...]
-   - Tiempo estimado: [...]
-
----
+1. Roles y permisos
+2. WebSockets para tareas en tiempo real
+3. Dockerización completa del entorno
 
 ## 📚 Recursos Consultados
-
-Lista de recursos que consultaste durante el desarrollo:
-
-- [Documentación oficial de X]
-- [Artículo sobre Y]
-- [Stack Overflow thread sobre Z]
-- [etc.]
-
----
+- Documentación Prisma
+- Documentación React
+- StackOverflow
+- MDN
 
 ## 🤔 Reflexión Final
+- **Qué salió bien:** Arquitectura limpia y mantenible
+- **Qué mejorar:** Más test coverage con tiempo adicional
+- **Qué aprendí:** Mejor dominio de Zustand, Prisma y testing avanzado
 
-### ¿Qué salió bien?
-
-[Reflexiona sobre qué aspectos del proyecto consideras que hiciste particularmente bien]
-
-### ¿Qué mejorarías?
-
-[Con más tiempo o conocimiento, ¿qué harías diferente?]
-
-### ¿Qué aprendiste?
-
-[¿Qué nuevas habilidades o conocimientos adquiriste durante este proyecto?]
-
----
-
-## 📸 Capturas de Pantalla
-
-[Opcional: Agrega capturas de pantalla de tu aplicación]
-
-### Login
-![Login](./screenshots/login.png)
-
-### Dashboard
-![Dashboard](./screenshots/dashboard.png)
-
-### Lista de Proyectos
-![Projects](./screenshots/projects.png)
-
-### Detalle de Tareas
-![Tasks](./screenshots/tasks.png)
-
----
-
-**Fecha de última actualización**: [DD/MM/YYYY]
+**Fecha última actualización:** 24/11/2025
