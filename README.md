@@ -1,229 +1,223 @@
 # Prueba Técnica - Fullstack Developer (Node.js + React)
 
-¡Bienvenido(a) a la prueba técnica para el puesto de **Desarrollador Fullstack**!
+¡Bienvenido(a) a mi solución para la prueba técnica para el puesto de **Desarrollador Fullstack**!
 
-Esta prueba evaluará tus habilidades en el desarrollo de aplicaciones full-stack modernas utilizando **Node.js**, **Express**, **React**, y bases de datos. Tendrás **48 horas** para completar el desafío.
-
----
-
-## 📋 Descripción del Proyecto
-
-Desarrollarás una **plataforma de gestión de proyectos y tareas colaborativa** donde los usuarios pueden:
-
-- Registrarse e iniciar sesión de forma segura
-- Crear y gestionar proyectos
-- Asignar tareas a diferentes proyectos
-- Colaborar con otros usuarios en proyectos compartidos
-- Filtrar, buscar y ordenar tareas por diferentes criterios
-- Ver estadísticas básicas de sus proyectos
+Esta implementación cumple con todos los requisitos solicitados: backend con Node.js + Express + Prisma + MySQL, frontend con React + Vite + Zustand, autenticación JWT, gestión completa de proyectos y tareas, estadísticas, filtros y pruebas automatizadas.
 
 ---
 
-## 🛠️ Stack Tecnológico Requerido
+## 📋 Descripción General del Proyecto
+
+Desarrollé una **plataforma colaborativa de gestión de proyectos y tareas**, permitiendo a los usuarios:
+
+- Registrarse e iniciar sesión con JWT
+- Crear, editar y eliminar proyectos
+- Agregar colaboradores a cada proyecto
+- Crear tareas asignadas a proyectos y usuarios
+- Gestionar tareas por estado y prioridad
+- Ver estadísticas generales en un dashboard
+- Acceder solo a contenido protegido (rutas seguras)
+
+---
+
+# 🛠️ Stack Tecnológico Final
 
 ### Backend
-- **Runtime**: Node.js (v18 o superior)
-- **Framework**: Express.js
-- **Lenguaje**: TypeScript
-- **Base de Datos**: MySQL **o** MongoDB (elige una)
-- **Autenticación**: JWT (JSON Web Tokens)
-- **Documentación API**: Swagger/OpenAPI
+- Node.js 18+
+- Express.js
+- Prisma ORM
+- MySQL 8
+- Zod (validación)
+- JWT + bcrypt
+- Swagger (documentación API)
+- Jest + Supertest
 
 ### Frontend
-- **Framework**: React (v18 o superior)
-- **Lenguaje**: TypeScript
-- **Routing**: React Router v6
-- **Estilos**: TailwindCSS (preferencia)
-
-### DevOps (Opcional)
-- **Containerización**: Docker + Docker Compose
-
-**Nota**: Puedes usar cualquier otra librería o herramienta que consideres necesaria. Documenta tus decisiones técnicas en el archivo `TECHNICAL_DECISIONS.md`.
+- React 18+
+- Vite
+- Zustand (global state)
+- React Hook Form + Zod resolver
+- TailwindCSS
+- React Router v6
+- React Testing Library
 
 ---
 
-## 📦 Funcionalidades Requeridas
+# 📦 Funcionalidades Implementadas
 
-### 1. Autenticación y Usuarios
+Se completaron **todas las funcionalidades obligatorias** del enunciado.
 
-**Backend:**
-- Registro de usuarios con validación
-- Login con generación de JWT
-- Middleware de autenticación para proteger rutas
-- Hash de contraseñas
-- Endpoint para obtener perfil del usuario autenticado
+### 🔐 Autenticación
+- Registro
+- Login con JWT
+- Protección de rutas
+- Perfil del usuario autenticado
 
-**Frontend:**
-- Formularios de registro y login con validaciones
-- Almacenamiento del token de autenticación
-- Rutas protegidas que requieren autenticación
-- Redirección automática según estado de autenticación
+### 📁 Proyectos
+- CRUD completo
+- Colaboradores por proyecto
+- Paginación, filtros y búsqueda
 
----
+### 📝 Tareas
+- CRUD
+- Estados: pendiente / en progreso / completada
+- Prioridades: baja / media / alta
+- Asignación a usuarios
+- Filtros avanzados
 
-### 2. Gestión de Proyectos
-
-**Backend:**
-- CRUD completo de proyectos
-- Solo el creador del proyecto puede editarlo o eliminarlo
-- Sistema de colaboradores: añadir usuarios a proyectos
-- Paginación en listado de proyectos
-
-**Frontend:**
-- Lista de proyectos con diseño responsive
-- Crear, editar y eliminar proyectos
-- Búsqueda y filtrado de proyectos
-- Gestión de colaboradores
-
----
-
-### 3. Gestión de Tareas
-
-**Backend:**
-- CRUD completo de tareas
-- Las tareas pertenecen a un proyecto
-- Estados: "pendiente", "en progreso", "completada"
-- Prioridades: "baja", "media", "alta"
-- Asignar tareas a colaboradores del proyecto
-- Filtros por estado, prioridad, proyecto, usuario asignado
-- Ordenamiento flexible
-
-**Frontend:**
-- Visualización de tareas (lista, kanban, o tu propuesta)
-- Crear, editar y eliminar tareas
-- Cambiar estado de tareas
-- Filtros interactivos
-- Asignación de tareas a usuarios
-
----
-
-### 4. Dashboard y Estadísticas
-
-**Backend:**
-- Endpoint con estadísticas del usuario:
-  - Total de proyectos
-  - Total de tareas
-  - Tareas por estado
-  - Otras métricas relevantes
-
-**Frontend:**
-- Dashboard con visualización de estadísticas
-- Resumen de actividad del usuario
-
----
-
-## 📊 Criterios de Evaluación
-
-Tu proyecto será evaluado en base a:
-
-| Criterio | Peso |
-|----------|------|
-| **Funcionalidad** | 30% |
-| **Calidad del Código** | 25% |
-| **Arquitectura y Diseño** | 15% |
-| **Seguridad** | 10% |
-| **UI/UX** | 10% |
-| **Documentación** | 5% |
-| **Testing** | 5% |
-
-### Puntos Extra (hasta +30%)
-- Docker implementation completa (+10%)
-- Tests exhaustivos (+5%)
-- Funcionalidades adicionales (+5%)
-- CI/CD pipeline (+5%)
-- Deploy en producción (+5%)
-
----
-
-## 📝 Instrucciones de Entrega
-
-1. **Fork del repositorio**: Crea un fork de este repositorio
-
-2. **Rama de trabajo**:
-   ```
-   test/tu-nombre-completo
-   ```
-
-3. **Estructura del proyecto**:
-   ```
-   /
-   ├── backend/
-   ├── frontend/
-   ├── TECHNICAL_DECISIONS.md    # Documenta tus decisiones aquí
-   ├── docker-compose.yml         # (opcional)
-   └── README.md                  # Actualiza con instrucciones de ejecución
-   ```
-
-4. **Documentación requerida**:
-   - Actualiza este README con instrucciones de instalación y ejecución
-   - Completa el archivo `TECHNICAL_DECISIONS.md` explicando tus elecciones
-   - Documenta tu API con Swagger
-   - Incluye al menos 5 tests
-
-5. **Pull Request**: Una vez completado, crea un PR hacia el repositorio original
-
----
-
-## ⏱️ Tiempo
-
-Tienes **48 horas** desde que recibes esta prueba. Gestiona tu tiempo según tus prioridades.
-
----
-
-## ❓ Preguntas Frecuentes
-
-**¿Puedo usar librerías adicionales?**
-Sí, documenta tus elecciones en `TECHNICAL_DECISIONS.md`.
-
-**¿Qué base de datos uso?**
-La que prefieras (MySQL o MongoDB). No afecta la evaluación.
-
-**¿Es obligatorio Docker?**
-No, pero suma puntos extra.
-
-**¿Puedo usar librerías de UI?**
-Sí. Recomendamos TailwindCSS para estilos, pero también puedes usar otras librerías de componentes (Material-UI, Ant Design, etc.).
-
----
-
-## 🎉 ¡Buena suerte!
-
-Recuerda: evaluamos no solo que funcione, sino **cómo está construido**. Demuestra tu criterio técnico y mejores prácticas.
-
-Si tienes dudas sobre los requisitos, no dudes en contactarnos.
+### 📊 Dashboard
+- Total de tareas
+- Total de proyectos
+- Tareas por estado
+- Actividad reciente
 
 ---
 
 # 📖 Instrucciones de Ejecución
 
-> **Nota**: Completa esta sección con las instrucciones para ejecutar tu proyecto.
+## 1. Prerrequisitos
 
-## Prerrequisitos
-[Tus prerrequisitos]
+- Node.js 18+
+- MySQL 8
+- npm o pnpm
 
-## Instalación
+---
+
+## 2. Instalación del Backend
+
 ```bash
-# Tus comandos
+cd backend
+npm install
 ```
 
-## Configuración
-```bash
-# Variables de entorno
+### Configuración del backend
+Crea un archivo `.env` dentro de `backend/`:
+
+```env
+PORT=5000
+NODE_ENV=development
+DATABASE_URL="mysql://root:password@localhost:3306/project_manager"
+JWT_SECRET="super_secret_jwt_key"
+JWT_EXPIRES_IN="7d"
+CORS_ORIGIN="http://localhost:5173"
+BCRYPT_SALT_ROUNDS=10
 ```
 
-## Ejecución
+### Ejecutar migraciones
+
 ```bash
-# Backend
-# Frontend
+npx prisma migrate dev
 ```
 
-## Tests
+### Ejecutar backend
+
 ```bash
-# Comandos de tests
+npm run dev
 ```
 
-## API Documentation
-- Swagger: [Tu URL]
+El servidor quedará disponible en:
 
-## Credenciales de Prueba
-[Si aplica]
+```
+http://localhost:5000
+```
+
+Swagger estará en:
+
+```
+http://localhost:5000/api/docs
+```
+
+---
+
+## 3. Instalación del Frontend
+
+```bash
+cd frontend
+npm install
+```
+
+### Configuración del frontend
+
+Crear `frontend/.env`:
+
+```env
+VITE_API_URL="http://localhost:5000/api"
+```
+
+### Ejecutar
+
+```bash
+npm run dev
+```
+
+Abrir en el navegador:
+
+```
+http://localhost:5173
+```
+
+---
+
+# 🧪 Tests
+
+### Backend
+```bash
+cd backend
+npm run test
+```
+
+### Frontend
+```bash
+cd frontend
+npm run test
+```
+
+Incluye tests para:
+- Auth
+- ProtectedRoute
+- ProjectsListPage
+- CreateTaskModal
+
+---
+
+# 📚 API Documentation
+
+Swagger disponible en:
+
+👉 http://localhost:5000/api/docs
+
+---
+
+# 🔑 Credenciales de prueba
+
+```txt
+email: demo@demo.com
+password: demo123
+```
+
+---
+
+# 📂 Estructura del Proyecto
+
+```
+/
+├── backend/
+│   ├── src/
+│   ├── prisma/
+│   ├── tests/
+│   └── .env
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── .env
+├── TECHNICAL_DECISIONS.md
+└── README.md
+```
+
+---
+
+# 🤝 Entrega
+
+- Rama de entrega: `test/sebastian-diaz`
+- Documentación técnica en: `TECHNICAL_DECISIONS.md`
+- Configuración detallada en: `CONFIGURATION.md`
