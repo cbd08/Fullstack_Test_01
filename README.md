@@ -188,15 +188,6 @@ Swagger disponible en:
 
 ---
 
-# 🔑 Credenciales de prueba
-
-```txt
-email: demo@demo.com
-password: demo123
-```
-
----
-
 # 📂 Estructura del Proyecto
 
 ```
@@ -220,4 +211,3 @@ password: demo123
 
 - Rama de entrega: `test/sebastian-diaz`
 - Documentación técnica en: `TECHNICAL_DECISIONS.md`
-- Configuración detallada en: `CONFIGURATION.md`
