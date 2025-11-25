@@ -11,7 +11,7 @@ interface TaskCardProps {
   onEdit: (task: Task) => void
 }
 
-export const TaskCard = ({ task, projectId, onChanged, onEdit }: TaskCardProps) => {
+export const TaskCard = ({ task, onChanged, onEdit }: TaskCardProps) => {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useDraggable({
       id: task.id,

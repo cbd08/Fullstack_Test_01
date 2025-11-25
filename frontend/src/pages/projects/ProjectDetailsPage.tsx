@@ -11,12 +11,6 @@ interface Project {
   description?: string
 }
 
-interface ProjectDetail {
-  id: number
-  name: string
-  description?: string | null
-}
-
 export const ProjectDetailsPage = () => {
   const { projectId } = useParams()
   const [project, setProject] = useState<Project | null>(null)

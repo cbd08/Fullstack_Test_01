@@ -12,11 +12,18 @@ import {
   CartesianGrid,
   Legend,
 } from 'recharts'
+import { useAuthStore } from '../../store/authStore'
+import { Navigate } from 'react-router-dom'
 
 export const DashboardPage = () => {
   const [data, setData] = useState<DashboardSummary | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated)
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />
+  }
 
   const loadDashboard = async () => {
     try {
@@ -27,6 +34,7 @@ export const DashboardPage = () => {
     } catch (err: any) {
       console.error(err)
       setError(err?.message || 'Error loading dashboard')
+      return <Navigate to="/login" replace />
     } finally {
       setLoading(false)
     }

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { http } from '../../services/http'
-import { useAuthStore } from '../../store/authStore'
+//import { useAuthStore } from '../../store/authStore'
 import { CreateProjectModal } from '../../components/projects/CreateProjectModal'
 import { EditProjectModal } from '../../components/projects/EditProjectModal'
 import { DeleteProjectModal } from '../../components/projects/DeleteProjectModal'
@@ -24,7 +24,7 @@ export const ProjectsListPage = () => {
   const [projectToEdit, setProjectToEdit] = useState<Project | null>(null)
   const [projectToDelete, setProjectToDelete] = useState<Project | null>(null)
 
-  const user = useAuthStore((state) => state.user)
+  //const user = useAuthStore((state) => state.user)
 
   const [search, setSearch] = useState('')
 
